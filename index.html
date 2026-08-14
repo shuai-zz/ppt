@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>从静态模型到可打印智能体 · Mission 11 MS3</title>
+<title>把工程做完整 · Mission 11 MS3 最终演示</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@300;400;500;600&family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -13,12 +13,12 @@
        切换主题:从 references/themes.md 复制对应的 :root 块
        整体替换这几行(--ink / --ink-rgb / --paper / --paper-rgb)
        其他地方散落的 rgba() 都走 var(--ink-rgb) / var(--paper-rgb),无需逐处改 */
-    --ink:#0a1f3d;
-    --ink-rgb:10,31,61;
-    --paper:#f1f3f5;
-    --paper-rgb:241,243,245;
-    --paper-tint:#e4e8ec;
-    --ink-tint:#152a4a;
+    --ink:#1a2e1f;
+    --ink-rgb:26,46,31;
+    --paper:#f5f1e8;
+    --paper-rgb:245,241,232;
+    --paper-tint:#ece7da;
+    --ink-tint:#253d2c;
 
     /* ============ 字体(跨主题固定) ============ */
     --mono:"IBM Plex Mono",ui-monospace,monospace;
@@ -486,287 +486,261 @@
 
 <!-- 01 · Cover -->
 <section class="slide hero dark">
-  <div class="chrome"><div>Mission 11 · Milestone 3</div><div>Demo Day · 2026.08</div></div>
-  <div class="frame" style="display:grid;gap:3.5vh;align-content:center;min-height:80vh">
-    <div class="kicker" data-anim>3D Print Assistant</div>
-    <h1 class="h-hero" style="font-size:8.2vw" data-anim>让静态模型<br>真正动起来</h1>
-    <h2 class="h-sub" data-anim>从模型识别、结构改造到可打印智能成品</h2>
-    <p class="lead" style="max-width:64vw" data-anim>上传 STL、OBJ 或 GLB，系统自动理解模型、选择处理路线、生成机械结构与 XAtom 安装空间，最终交付可打印零件、装配预览和下载包。</p>
-    <div class="meta-row" data-anim><span>AI × Geometry × Fabrication</span><span>·</span><span>20 MIN PRODUCT DEMO</span></div>
+  <div class="chrome"><div>Mission 11 · Milestone 3</div><div>Final Review · 2026.08</div></div>
+  <div class="frame" style="display:grid;gap:4vh;align-content:center;min-height:80vh">
+    <div class="kicker" data-anim>ENGINEERING REVIEW</div>
+    <h1 class="h-hero" style="font-size:8.4vw" data-anim>把工程<br>做完整</h1>
+    <h2 class="h-sub" data-anim>从“核心路径可用”到“功能闭合、质量达标、过程可追溯”</h2>
+    <div class="meta-row" data-anim><span>MISSION 11</span><span>·</span><span>XATOM 3D PRINT ASSISTANT</span><span>·</span><span>20 MIN</span></div>
   </div>
-  <div class="foot"><div>Mission 11 · XAtom 3D Print</div><div>01 / 17</div></div>
+  <div class="foot"><div>MS3 · Final Demonstration</div><div>01 / 17</div></div>
 </section>
 
-<!-- 02 · Hook -->
-<section class="slide light" data-animate="directional">
-  <div class="chrome"><div>Act I · Product Vision</div><div>02 / 17</div></div>
-  <div class="frame grid-2-6-6" style="padding-top:7vh;align-items:center">
-    <div data-anim="left">
-      <div class="kicker">用户已经有模型</div>
-      <h2 class="h-xl" style="font-size:5.6vw">但它只是<br>一个外壳。</h2>
-      <p class="lead" style="margin-top:4vh">生成式模型擅长外观，却通常缺少分件、关节、公差、腔体与装配关系，无法直接成为可动、可交互的打印成品。</p>
-    </div>
-    <div data-anim="right" style="display:grid;gap:2.8vh">
-      <div class="callout"><span class="q-big">我们的目标不是“再生成一个 3D 模型”，而是把已有模型编译成可制造的产品。</span><div class="callout-src">MISSION 11 · PRODUCT THESIS</div></div>
-      <div class="grid-3" style="gap:2vw">
-        <div class="pillar"><div class="ic">01</div><div class="t">理解</div><div class="d">判断类别、姿态与几何结构</div></div>
-        <div class="pillar"><div class="ic">02</div><div class="t">改造</div><div class="d">生成腔体、关节与机械零件</div></div>
-        <div class="pillar"><div class="ic">03</div><div class="t">交付</div><div class="d">输出打印包与装配预览</div></div>
-      </div>
-    </div>
-  </div>
-  <div class="foot"><div>From appearance mesh to manufacturable object</div><div>Product Thesis</div></div>
-</section>
-
-<!-- 03 · Product promise -->
-<section class="slide dark" data-animate="quote">
-  <div class="chrome"><div>Act I · Product Promise</div><div>03 / 17</div></div>
-  <div class="frame center" style="gap:4vh">
-    <div class="kicker" data-anim>ONE SENTENCE</div>
-    <div class="h-xl" style="font-size:5.5vw;max-width:82vw" data-anim="line">上传一个模型，</div>
-    <div class="h-xl" style="font-size:5.5vw;max-width:82vw" data-anim="line">得到一套可打印、可装配、</div>
-    <div class="h-xl" style="font-size:5.5vw;max-width:82vw" data-anim="line">可嵌入智能体的成品方案。</div>
-    <div class="meta-row" data-anim><span>MODEL IN</span><span>→</span><span>DESIGN PACKAGE OUT</span></div>
-  </div>
-  <div class="foot"><div>Mission 11 · Value Proposition</div><div>03 / 17</div></div>
-</section>
-
-<!-- 04 · E2E pipeline -->
-<section class="slide light" data-animate="pipeline">
-  <div class="chrome"><div>Act I · End-to-End Workflow</div><div>04 / 17</div></div>
-  <div class="frame">
-    <div class="kicker">从上传到打印包</div>
-    <h2 class="h-xl" style="font-size:5.4vw">一条完整处理链</h2>
-    <div class="pipeline-section">
-      <div class="pipeline-label">INPUT → UNDERSTANDING → TRANSFORMATION → DELIVERY</div>
-      <div class="pipeline" data-cols="6">
-        <div class="step" data-anim="step"><div class="step-nb">01</div><div class="step-title">上传模型</div><div class="step-desc">STL / OBJ / GLB<br>即时三维预览</div></div>
-        <div class="step" data-anim="step"><div class="step-nb">02</div><div class="step-title">结构分析</div><div class="step-desc">主轴、比例、组件<br>开放集预分类</div></div>
-        <div class="step" data-anim="step"><div class="step-nb">03</div><div class="step-title">视觉复核</div><div class="step-desc">多视图渲染<br>语义方向判断</div></div>
-        <div class="step" data-anim="step"><div class="step-nb">04</div><div class="step-title">路线选择</div><div class="step-desc">车辆 / 玩偶 / 人形<br>通用模型</div></div>
-        <div class="step" data-anim="step"><div class="step-nb">05</div><div class="step-title">几何改造</div><div class="step-desc">腔体、盖板、关节<br>布尔与终验</div></div>
-        <div class="step" data-anim="step"><div class="step-nb">06</div><div class="step-title">结果交付</div><div class="step-desc">STL 零件、GLB 预览<br>ZIP 打印包</div></div>
-      </div>
-    </div>
-    <div class="callout" style="margin-top:5vh" data-anim="step">所有处理都通过统一任务状态串联；用户可以并行上传多个模型，查看进度、结果和每个零件的下载入口。<div class="callout-src">FASTAPI PIPELINE + NEXT.JS BFF</div></div>
-  </div>
-  <div class="foot"><div>Press → to reveal each stage</div><div>04 / 17</div></div>
-</section>
-
-<!-- 05 · Divider -->
-<section class="slide hero light">
-  <div class="chrome"><div>Act II · System</div><div>05 / 17</div></div>
-  <div class="frame" style="display:grid;gap:5vh;align-content:center;min-height:80vh">
-    <div class="kicker" data-anim>Act II</div>
-    <h1 class="h-hero" style="font-size:8vw" data-anim>一套系统<br>四条路线</h1>
-    <p class="lead" style="max-width:58vw" data-anim>共享编排与几何能力，同时尊重不同模型类别的结构差异。</p>
-  </div>
-  <div class="foot"><div>System Architecture</div><div>05 / 17</div></div>
-</section>
-
-<!-- 06 · Architecture -->
-<section class="slide dark">
-  <div class="chrome"><div>Act II · Architecture</div><div>06 / 17</div></div>
-  <div class="frame" style="padding-top:4vh">
-    <div class="kicker" data-anim>模块化，而不是巨型脚本</div>
-    <h2 class="h-xl" style="font-size:5vw" data-anim>可扩展的处理架构</h2>
-    <div class="grid-4" style="margin-top:5vh;gap:3vh 4vw">
-      <div class="pillar" data-anim><div class="ic"><i data-lucide="monitor"></i></div><div class="t">交互与预览</div><div class="d">Next.js 15、React 19、Three.js；负责上传、任务恢复、选项控制与原始/结果模型预览。</div></div>
-      <div class="pillar" data-anim><div class="ic"><i data-lucide="route"></i></div><div class="t">任务编排</div><div class="d">FastAPI、BackgroundTasks 与 Pipeline Registry；统一任务生命周期和领域路线选择。</div></div>
-      <div class="pillar" data-anim><div class="ic"><i data-lucide="scan-search"></i></div><div class="t">模型理解</div><div class="d">Trimesh / NumPy 本地几何优先，Blender 多视图与多模态模型按需复核。</div></div>
-      <div class="pillar" data-anim><div class="ic"><i data-lucide="box"></i></div><div class="t">制造几何</div><div class="d">cavity-engine、car-converter、doll-embedding、snapfit-pipeline 共同完成真实几何处理。</div></div>
-    </div>
-  </div>
-  <div class="foot"><div>Frontend · Orchestration · Intelligence · Geometry</div><div>06 / 17</div></div>
-</section>
-
-<!-- 07 · Routes -->
+<!-- 02 · Evaluation axes -->
 <section class="slide light">
-  <div class="chrome"><div>Act II · Domain Routes</div><div>07 / 17</div></div>
-  <div class="frame" style="padding-top:4vh">
-    <div class="kicker" data-anim>Pipeline Registry</div>
-    <h2 class="h-xl" style="font-size:5vw" data-anim>四类模型，各有解法</h2>
-    <div style="margin-top:5vh">
-      <div class="rowline" data-anim><div class="k">车辆</div><div class="v">检测 4 / 6 / 8 轮，重建固定贯穿轴、轮、轴帽与车尾 XAtom 安装舱。</div><div class="m">CAR</div></div>
-      <div class="rowline" data-anim><div class="k">玩偶</div><div class="v">识别正背面，在安全连续曲面生成 30.4 mm 腔体与随形收音盖板。</div><div class="m">FIGURINE</div></div>
-      <div class="rowline" data-anim><div class="k">人形</div><div class="v">背部嵌入 XAtom，并可通过 RTMPose / 视觉标定生成铰接关节与装配结果。</div><div class="m">HUMANOID</div></div>
-      <div class="rowline" data-anim><div class="k">开放集</div><div class="v">不属于三类时保留 unknown，通过通用候选搜索寻找可制造的次要表面。</div><div class="m">GENERIC</div></div>
-    </div>
-  </div>
-  <div class="foot"><div>Specialized pipelines on a shared contract</div><div>07 / 17</div></div>
-</section>
-
-<!-- 08 · Classifier -->
-<section class="slide light">
-  <div class="chrome"><div>Act II · Model Intelligence</div><div>08 / 17</div></div>
-  <div class="frame grid-2-7-5" style="padding-top:6vh">
-    <div style="display:flex;flex-direction:column;gap:3vh">
-      <div><div class="kicker" data-anim>Geometry First</div><h2 class="h-xl" style="font-size:5.2vw" data-anim>先看结构，<br>再问视觉。</h2></div>
-      <p class="lead" data-anim>主轴比例、横截面、端部收缩、组件分布等特征足够明确时，本地直接决策；只有模糊样本才渲染多视图并调用视觉模型。</p>
-      <div class="callout" data-anim>开放集不是“第四种模型”，而是系统承认未知，并安全回退到通用路线。<div class="callout-src">LOCAL STRUCTURAL → VLM FALLBACK</div></div>
-    </div>
-    <div style="display:grid;gap:2.2vh;margin-top:4vh" data-anim>
-      <div class="stat-card"><div class="stat-label">Benchmark Set</div><div class="stat-nb">73</div><div class="stat-note">真实模型覆盖车、玩偶、人形与域外类型</div></div>
-      <div class="stat-card"><div class="stat-label">Allowed Labels</div><div class="stat-nb">4</div><div class="stat-note">che · figurine · ren_zhan · unknown</div></div>
-      <div class="stat-card"><div class="stat-label">Vision Render</div><div class="stat-nb">3<span class="stat-unit">视图</span></div><div class="stat-note">正面、侧面、背面语义复核</div></div>
-    </div>
-  </div>
-  <div class="foot"><div>Fast local decision · Expensive vision only when needed</div><div>08 / 17</div></div>
-</section>
-
-<!-- 09 · Shared geometry -->
-<section class="slide dark">
-  <div class="chrome"><div>Act II · Geometry Core</div><div>09 / 17</div></div>
+  <div class="chrome"><div>Review Frame · Three Axes</div><div>02 / 17</div></div>
   <div class="frame" style="padding-top:5vh">
-    <div class="kicker" data-anim>cavity-engine</div>
-    <h2 class="h-xl" style="font-size:5vw" data-anim>把“开一个洞”<br>变成制造决策</h2>
-    <div class="grid-3" style="margin-top:6vh">
-      <div class="pillar" data-anim><div class="ic">01</div><div class="t">候选生成</div><div class="d">按类别约束允许表面，从相对坐标生成候选，不依赖具体模型名称和硬编码位置。</div></div>
-      <div class="pillar" data-anim><div class="ic">02</div><div class="t">几何评分</div><div class="d">批量射线测深，综合连续材料、边缘支撑、曲率、沟槽、断差与展示面保护。</div></div>
-      <div class="pillar" data-anim><div class="ic">03</div><div class="t">制造终验</div><div class="d">布尔差集、五面壁厚、主体连通性、装配干涉与 STL 写盘回读全部通过才交付。</div></div>
+    <div class="kicker" data-anim>今天只回答三个问题</div>
+    <h2 class="h-xl" style="font-size:5.5vw" data-anim>MS3，如何证明做扎实？</h2>
+    <div class="grid-3" style="margin-top:7vh">
+      <div class="pillar" data-anim><div class="ic">01</div><div class="t">功能闭合度</div><div class="d">MVP 是否完整、主要场景是否端到端可用、依赖和范围是否受控。</div></div>
+      <div class="pillar" data-anim><div class="ic">02</div><div class="t">代码与架构质量</div><div class="d">模块是否清晰可扩展、核心能力是否有测试和质量门禁。</div></div>
+      <div class="pillar" data-anim><div class="ic">03</div><div class="t">过程规范与协作</div><div class="d">Issue、PR、Review、Commit 与设计记录是否形成可追溯闭环。</div></div>
     </div>
   </div>
-  <div class="foot"><div>Search · Score · Boolean · Validate</div><div>09 / 17</div></div>
+  <div class="foot"><div>Function · Quality · Process</div><div>02 / 17</div></div>
 </section>
 
-<!-- 10 · Vehicle -->
-<section class="slide light">
-  <div class="chrome"><div>Act III · Vehicle Route</div><div>10 / 17</div></div>
-  <div class="frame grid-2-8-4" style="padding-top:5vh">
-    <div>
-      <div class="kicker" data-anim>Case 01 · Car</div>
-      <h2 class="h-xl" style="font-size:5.3vw" data-anim>从一体车壳<br>到 9 个打印件</h2>
-      <p class="lead" style="margin-top:3vh" data-anim>保留生成式外观，重新构建机械结构：移除粘连轮区，建立轴管、固定贯穿轴、独立轮与轴帽，并在车尾生成 XAtom 舱。</p>
-      <div class="pipeline" data-cols="4" style="margin-top:5vh">
-        <div class="step" data-anim><div class="step-nb">01</div><div class="step-title">检测轮组</div><div class="step-desc">支持 4 / 6 / 8 轮</div></div>
-        <div class="step" data-anim><div class="step-nb">02</div><div class="step-title">重建车身</div><div class="step-desc">清理轮区与连接结构</div></div>
-        <div class="step" data-anim><div class="step-nb">03</div><div class="step-title">生成机械件</div><div class="step-desc">轴、轮、轴帽与测试片</div></div>
-        <div class="step" data-anim><div class="step-nb">04</div><div class="step-title">装配验证</div><div class="step-desc">碰撞、扫掠、闭合性</div></div>
+<!-- 03 · Divider I -->
+<section class="slide hero light">
+  <div class="chrome"><div>Act I · Functional Closure</div><div>03 / 17</div></div>
+  <div class="frame" style="display:grid;gap:5vh;align-content:center;min-height:80vh">
+    <div class="kicker" data-anim>01 · 功能闭合度</div>
+    <h1 class="h-hero" style="font-size:8vw" data-anim>不是功能多，<br>是闭环完整。</h1>
+    <p class="lead" style="max-width:62vw" data-anim>明确 MVP 边界，把范围内的每条主要场景从输入一直交付到可验证结果。</p>
+  </div>
+  <div class="foot"><div>Act I · Functional Closure</div><div>03 / 17</div></div>
+</section>
+
+<!-- 04 · MVP boundary -->
+<section class="slide dark">
+  <div class="chrome"><div>Act I · MVP Boundary</div><div>04 / 17</div></div>
+  <div class="frame" style="padding-top:4vh">
+    <div class="kicker" data-anim>先画边界，再谈完成</div>
+    <h2 class="h-xl" style="font-size:5vw" data-anim>一条主链，四类输入，两类改造</h2>
+    <div class="grid-4" style="margin-top:5vh;gap:3vh 5vw">
+      <div class="pillar" data-anim><div class="ic"><i data-lucide="upload"></i></div><div class="t">统一入口</div><div class="d">STL / OBJ / GLB 上传、三维预览、异步任务与状态恢复。</div></div>
+      <div class="pillar" data-anim><div class="ic"><i data-lucide="scan-search"></i></div><div class="t">开放集识别</div><div class="d">车辆、玩偶、人形、unknown；本地结构优先，视觉按需复核。</div></div>
+      <div class="pillar" data-anim><div class="ic"><i data-lucide="box"></i></div><div class="t">XAtom 嵌入</div><div class="d">安全选位、30 mm 级腔体、随形盖板、功能孔与制造终验。</div></div>
+      <div class="pillar" data-anim><div class="ic"><i data-lucide="move-3d"></i></div><div class="t">机械可动化</div><div class="d">车辆轴轮重建、人形 SnapFit 关节拆分与联合装配。</div></div>
+    </div>
+  </div>
+  <div class="foot"><div>Scope is a decision, not a wishlist</div><div>04 / 17</div></div>
+</section>
+
+<!-- 05 · E2E closure -->
+<section class="slide light" data-animate="pipeline">
+  <div class="chrome"><div>Act I · End-to-End Closure</div><div>05 / 17</div></div>
+  <div class="frame">
+    <div class="kicker">主要场景端到端</div>
+    <h2 class="h-xl" style="font-size:5.2vw">从一个文件，到一套成品</h2>
+    <div class="pipeline-section">
+      <div class="pipeline-label">INPUT → DECISION → GEOMETRY → VALIDATION → DELIVERY</div>
+      <div class="pipeline" data-cols="6">
+        <div class="step" data-anim="step"><div class="step-nb">01</div><div class="step-title">上传</div><div class="step-desc">格式接入<br>原始预览</div></div>
+        <div class="step" data-anim="step"><div class="step-nb">02</div><div class="step-title">分类</div><div class="step-desc">结构分析<br>视觉复核</div></div>
+        <div class="step" data-anim="step"><div class="step-nb">03</div><div class="step-title">选项</div><div class="step-desc">嵌入 XAtom<br>拆分关节</div></div>
+        <div class="step" data-anim="step"><div class="step-nb">04</div><div class="step-title">改造</div><div class="step-desc">腔体 / 盖板<br>轴轮 / SnapFit</div></div>
+        <div class="step" data-anim="step"><div class="step-nb">05</div><div class="step-title">终验</div><div class="step-desc">闭合 / 壁厚<br>碰撞 / 装配</div></div>
+        <div class="step" data-anim="step"><div class="step-nb">06</div><div class="step-title">交付</div><div class="step-desc">零件 STL<br>GLB + ZIP</div></div>
       </div>
     </div>
-    <div style="display:grid;gap:2vh;margin-top:2vh">
-      <div class="stat-card" data-anim><div class="stat-label">Canonical Wheel</div><div class="stat-nb">34<span class="stat-unit">mm</span></div><div class="stat-note">统一轮径缩放</div></div>
-      <div class="stat-card" data-anim><div class="stat-label">Print Parts</div><div class="stat-nb">9</div><div class="stat-note">车身 + 轮 + 轴 + 轴帽</div></div>
-      <div class="stat-card" data-anim><div class="stat-label">Vehicle Types</div><div class="stat-nb">3</div><div class="stat-note">4 / 6 / 8 轮</div></div>
-    </div>
+    <div class="callout" style="margin-top:5vh" data-anim="step">闭环的定义：每个成功状态都有可下载产物；每个失败状态都有可读原因；用户不需要离开产品去手工补流程。<div class="callout-src">DEFINITION OF DONE</div></div>
   </div>
-  <div class="foot"><div>car-converter · deterministic mechanical reconstruction</div><div>10 / 17</div></div>
+  <div class="foot"><div>Press → to reveal the critical path</div><div>05 / 17</div></div>
 </section>
 
-<!-- 11 · Figurine -->
-<section class="slide dark">
-  <div class="chrome"><div>Act III · Figurine Route</div><div>11 / 17</div></div>
-  <div class="frame grid-2-7-5" style="padding-top:5vh">
-    <div>
-      <div class="kicker" data-anim>Case 02 · Figurine</div>
-      <h2 class="h-xl" style="font-size:5.2vw" data-anim>外观不变，<br>智能体藏进去。</h2>
-      <p class="lead" style="margin-top:3vh" data-anim>系统在模型背部寻找安全连续曲面，生成内部腔体和贴合原始表面的独立盖板；收音孔与接口孔由配置化负体定义。</p>
-      <div class="callout" style="margin-top:4vh" data-anim>盖板不是一块平板，而是从原模型表面高密度采样得到的随形壳体。<div class="callout-src">DOLL-EMBEDDING · SURFACE-FITTED LID</div></div>
-    </div>
-    <div style="display:grid;gap:3vh;margin-top:2vh">
-      <div class="stat-card" data-anim><div class="stat-label">Internal Space</div><div class="stat-nb" style="font-size:4.2vw">30.4³<span class="stat-unit">mm</span></div><div class="stat-note">XAtom 有效安装空间</div></div>
-      <div class="stat-card" data-anim><div class="stat-label">Lid Sampling</div><div class="stat-nb">0.7<span class="stat-unit">mm</span></div><div class="stat-note">高密度曲面采样间距</div></div>
-      <div class="stat-card" data-anim><div class="stat-label">Visual Views</div><div class="stat-nb">6</div><div class="stat-note">正背语义与安全区域复核</div></div>
-    </div>
-  </div>
-  <div class="foot"><div>doll-embedding · semantic placement meets geometry</div><div>11 / 17</div></div>
-</section>
-
-<!-- 12 · Humanoid -->
+<!-- 06 · dependency reverse planning -->
 <section class="slide light">
-  <div class="chrome"><div>Act III · Humanoid Route</div><div>12 / 17</div></div>
+  <div class="chrome"><div>Act I · Dependency Planning</div><div>06 / 17</div></div>
   <div class="frame" style="padding-top:4vh">
-    <div class="kicker" data-anim>Case 03 · Humanoid</div>
-    <h2 class="h-xl" style="font-size:5vw" data-anim>一个模型，三种成品</h2>
-    <div class="grid-3" style="margin-top:6vh">
-      <div class="pillar" data-anim><div class="ic"><i data-lucide="package-open"></i></div><div class="t">只嵌入 XAtom</div><div class="d">锁定中上背部，生成 30 mm 腔体、前壁保护与随形盖板，保持原始整体姿态。</div></div>
-      <div class="pillar" data-anim><div class="ic"><i data-lucide="move-3d"></i></div><div class="t">只拆分关节</div><div class="d">RTMPose 优先定位人体关节，门禁失败时使用视觉标定，生成 SnapFit 可动部件。</div></div>
-      <div class="pillar" data-anim><div class="ic"><i data-lucide="combine"></i></div><div class="t">嵌入 + 关节</div><div class="d">先完成腔体与标定，再拆分关节，输出 BODY、关节零件、盖板和联合装配预览。</div></div>
+    <div class="kicker" data-anim>从交付物倒排，而不是并行堆功能</div>
+    <h2 class="h-xl" style="font-size:4.9vw" data-anim>模块依赖决定开发顺序</h2>
+    <div style="margin-top:5vh">
+      <div class="rowline" data-anim><div class="k">04 · 产品交付</div><div class="v">预览、逐件下载、ZIP、任务恢复</div><div class="m">依赖稳定输出契约</div></div>
+      <div class="rowline" data-anim><div class="k">03 · 领域管线</div><div class="v">车辆、玩偶、人形、通用路线</div><div class="m">依赖分类与几何核心</div></div>
+      <div class="rowline" data-anim><div class="k">02 · 共享能力</div><div class="v">模型分类、归一坐标、候选搜索、制造终验</div><div class="m">先稳定接口与约束</div></div>
+      <div class="rowline" data-anim><div class="k">01 · 工程主干</div><div class="v">Pipeline Registry、任务状态、输入输出契约</div><div class="m">最先落地</div></div>
     </div>
-    <div class="callout" style="margin-top:6vh" data-anim>用户在分析完成后选择成品形态；同一套任务链负责转换、零件复制、逐件下载和 ZIP 打包。<div class="callout-src">HUMANOID PIPELINE · COMPOSABLE OPTIONS</div></div>
   </div>
-  <div class="foot"><div>Embedding and articulation can be composed</div><div>12 / 17</div></div>
+  <div class="foot"><div>Delivery → Domain → Shared Core → Contracts</div><div>06 / 17</div></div>
 </section>
 
-<!-- 13 · UX -->
+<!-- 07 · controlled scope -->
+<section class="slide dark" data-animate="directional">
+  <div class="chrome"><div>Act I · Scope Control</div><div>07 / 17</div></div>
+  <div class="frame grid-2-6-6" style="padding-top:7vh;align-items:center">
+    <div data-anim="left"><div class="kicker">KEEP</div><h2 class="h-xl" style="font-size:5.2vw">范围内，<br>必须闭合。</h2><p class="lead" style="margin-top:4vh">模型上传、开放集分类、真实几何处理、结果预览与打印包交付，构成 MS3 的完整用户价值。</p></div>
+    <div data-anim="right"><div class="kicker">DEFER</div><h2 class="h-xl" style="font-size:5.2vw">范围外，<br>明确推迟。</h2><p class="lead" style="margin-top:4vh">通用骨架理解、任意姿态四足、主动电机控制、切片与打印机闭环，不进入本轮承诺。</p></div>
+  </div>
+  <div class="foot"><div>Control scope to protect delivery</div><div>07 / 17</div></div>
+</section>
+
+<!-- 08 · Divider II -->
+<section class="slide hero dark">
+  <div class="chrome"><div>Act II · Code &amp; Architecture</div><div>08 / 17</div></div>
+  <div class="frame" style="display:grid;gap:5vh;align-content:center;min-height:80vh">
+    <div class="kicker" data-anim>02 · 代码与架构质量</div>
+    <h1 class="h-hero" style="font-size:8vw" data-anim>主干稳定，<br>能力叠加。</h1>
+    <p class="lead" style="max-width:60vw" data-anim>架构不是目录清单，而是让新路线可以沿既有契约落地。</p>
+  </div>
+  <div class="foot"><div>Act II · Code &amp; Architecture</div><div>08 / 17</div></div>
+</section>
+
+<!-- 09 · architecture diagram -->
 <section class="slide light">
-  <div class="chrome"><div>Act III · Product Experience</div><div>13 / 17</div></div>
-  <div class="frame grid-2-6-6" style="padding-top:5vh">
-    <div>
-      <div class="kicker" data-anim>复杂几何，简单操作</div>
-      <h2 class="h-xl" style="font-size:5.1vw" data-anim>模型处理控制台</h2>
-      <p class="lead" style="margin-top:3vh" data-anim>前端把分类、选项、进度、预览与下载组织成连续任务体验。用户不需要理解 Blender、布尔算法或坐标变换。</p>
-      <div style="margin-top:4vh">
-        <div class="rowline" style="grid-template-columns:1fr 3fr" data-anim><div class="k">上传</div><div class="v">实时进度、文件大小、超时与错误提示</div></div>
-        <div class="rowline" style="grid-template-columns:1fr 3fr" data-anim><div class="k">分析</div><div class="v">类别、置信度与可选处理方式</div></div>
-        <div class="rowline" style="grid-template-columns:1fr 3fr" data-anim><div class="k">结果</div><div class="v">原始/装配三维预览、逐件下载与打印包</div></div>
-      </div>
-    </div>
-    <div class="img-slot r-4x3" style="margin-top:5vh" data-anim><div class="plus">+</div><div class="label">可选补充：产品控制台截图<br>建议 4:3 · PNG</div></div>
+  <div class="chrome"><div>Act II · System Architecture</div><div>09 / 17</div></div>
+  <div class="frame" style="padding-top:3vh">
+    <div class="kicker" data-anim>稳定主干承载多领域管线</div>
+    <h2 class="h-xl" style="font-size:4.5vw" data-anim>Mission 11 系统架构</h2>
+    <figure class="frame-img fit-contain" style="height:57vh;margin-top:2vh;background:transparent" data-anim>
+      <img src="images/09-architecture.png" alt="Mission 11 分层系统架构图">
+    </figure>
   </div>
-  <div class="foot"><div>Next.js · Three.js · Task-oriented UX</div><div>13 / 17</div></div>
+  <div class="foot"><div>Whiteboard source included · SVG + OpenAPI JSON</div><div>09 / 17</div></div>
 </section>
 
-<!-- 14 · Quality -->
+<!-- 10 · boundaries -->
 <section class="slide dark">
-  <div class="chrome"><div>Act IV · Engineering Quality</div><div>14 / 17</div></div>
+  <div class="chrome"><div>Act II · Module Boundaries</div><div>10 / 17</div></div>
   <div class="frame" style="padding-top:4vh">
-    <div class="kicker" data-anim>MS3 · Quality by Design</div>
-    <h2 class="h-xl" style="font-size:5vw" data-anim>把质量写进流程</h2>
+    <div class="kicker" data-anim>每个模块只回答一类问题</div>
+    <h2 class="h-xl" style="font-size:5vw" data-anim>清晰边界，降低联动成本</h2>
+    <div class="grid-4" style="margin-top:5vh;gap:3vh 5vw">
+      <div class="pillar" data-anim><div class="ic">API</div><div class="t">Pipeline Contract</div><div class="d">所有领域路线遵循 detect / convert / result 契约，前端无需知道内部算法。</div></div>
+      <div class="pillar" data-anim><div class="ic">CORE</div><div class="t">Shared Geometry</div><div class="d">候选、测深、评分和终验下沉到 cavity-engine，避免路线间复制逻辑。</div></div>
+      <div class="pillar" data-anim><div class="ic">DOMAIN</div><div class="t">Specialized Pipelines</div><div class="d">车辆、玩偶、人形保留各自机械约束和制造策略，扩展互不污染。</div></div>
+      <div class="pillar" data-anim><div class="ic">EDGE</div><div class="t">Provider Adapters</div><div class="d">Blender、VLM、RTMPose 通过适配边界接入，失败可解释、可回退。</div></div>
+    </div>
+  </div>
+  <div class="foot"><div>High cohesion · Low coupling · Stable contracts</div><div>10 / 17</div></div>
+</section>
+
+<!-- 11 · quality evidence -->
+<section class="slide light">
+  <div class="chrome"><div>Act II · Quality Evidence</div><div>11 / 17</div></div>
+  <div class="frame" style="padding-top:4vh">
+    <div class="kicker" data-anim>测试覆盖核心风险</div>
+    <h2 class="h-xl" style="font-size:4.9vw" data-anim>质量不是最后补一轮</h2>
     <div class="grid-6" style="margin-top:4vh;gap:3vh 4vw">
-      <div class="stat-card" data-anim><div class="stat-label">Backend</div><div class="stat-nb" style="font-size:4.3vw">43</div><div class="stat-note">任务编排与路线测试</div></div>
-      <div class="stat-card" data-anim><div class="stat-label">Car Converter</div><div class="stat-nb" style="font-size:4.3vw">99</div><div class="stat-note">检测、几何与验证测试</div></div>
-      <div class="stat-card" data-anim><div class="stat-label">Doll Embedding</div><div class="stat-nb" style="font-size:4.3vw">46+</div><div class="stat-note">选位、视觉与盖板测试</div></div>
-      <div class="stat-card" data-anim><div class="stat-label">Cavity Engine</div><div class="stat-nb" style="font-size:4.3vw">13</div><div class="stat-note">共享几何核心测试</div></div>
-      <div class="stat-card" data-anim><div class="stat-label">Benchmark Models</div><div class="stat-nb" style="font-size:4.3vw">73</div><div class="stat-note">真实分类评测集</div></div>
-      <div class="stat-card" data-anim><div class="stat-label">Merged PRs</div><div class="stat-nb" style="font-size:4.3vw">43</div><div class="stat-note">Issue 驱动的增量交付</div></div>
+      <div class="stat-card" data-anim><div class="stat-label">Backend</div><div class="stat-nb" style="font-size:4.2vw">43</div><div class="stat-note">编排、状态与路线集成</div></div>
+      <div class="stat-card" data-anim><div class="stat-label">Car Converter</div><div class="stat-nb" style="font-size:4.2vw">99</div><div class="stat-note">检测、几何与装配验证</div></div>
+      <div class="stat-card" data-anim><div class="stat-label">Doll Embedding</div><div class="stat-nb" style="font-size:4.2vw">46+</div><div class="stat-note">选位、视觉与盖板</div></div>
+      <div class="stat-card" data-anim><div class="stat-label">Cavity Engine</div><div class="stat-nb" style="font-size:4.2vw">13</div><div class="stat-note">共享几何核心</div></div>
+      <div class="stat-card" data-anim><div class="stat-label">Benchmark</div><div class="stat-nb" style="font-size:4.2vw">73</div><div class="stat-note">真实模型分类评测</div></div>
+      <div class="stat-card" data-anim><div class="stat-label">Frontend Gate</div><div class="stat-nb" style="font-size:4.2vw">2</div><div class="stat-note">Typecheck + Build</div></div>
     </div>
   </div>
-  <div class="foot"><div>Tests · Validation · Benchmark · Review</div><div>14 / 17</div></div>
+  <div class="foot"><div>Unit · Integration · Geometry · Benchmark</div><div>11 / 17</div></div>
 </section>
 
-<!-- 15 · Artifact evolution placeholders -->
+<!-- 12 · architecture evolution -->
 <section class="slide light">
-  <div class="chrome"><div>Act IV · Physical Evolution</div><div>15 / 17</div></div>
+  <div class="chrome"><div>Act II · Architecture Evolution</div><div>12 / 17</div></div>
   <div class="frame" style="padding-top:4vh">
-    <div class="kicker" data-anim>从屏幕走到现实</div>
+    <div class="kicker" data-anim>没有推翻重来，而是逐层填实</div>
+    <h2 class="h-xl" style="font-size:4.8vw" data-anim>架构演进有迹可循</h2>
+    <div class="pipeline-section" style="margin-top:5vh">
+      <div class="pipeline" data-cols="4">
+        <div class="step" data-anim><div class="step-nb">MS1</div><div class="step-title">主干串联</div><div class="step-desc">前端 SDK、FastAPI、Pipeline Contract 与任务状态骨架</div></div>
+        <div class="step" data-anim><div class="step-nb">MS2</div><div class="step-title">真实路线</div><div class="step-desc">车辆、玩偶、人形从 mock 逐步替换为真实几何管线</div></div>
+        <div class="step" data-anim><div class="step-nb">MS3-A</div><div class="step-title">共享核心</div><div class="step-desc">抽取 cavity-engine，统一候选搜索与制造验证</div></div>
+        <div class="step" data-anim><div class="step-nb">MS3-B</div><div class="step-title">能力组合</div><div class="step-desc">SnapFit、XAtom 与结果交付沿稳定接口组合</div></div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:6vh" data-anim>架构变化的方向始终是：把重复能力下沉，把领域差异留在插件，把用户体验稳定在统一任务契约之上。<div class="callout-src">ARCHITECTURE REVIEW</div></div>
+  </div>
+  <div class="foot"><div>Stable spine · Incremental capability</div><div>12 / 17</div></div>
+</section>
+
+<!-- 13 · Divider III -->
+<section class="slide hero light">
+  <div class="chrome"><div>Act III · Process &amp; Collaboration</div><div>13 / 17</div></div>
+  <div class="frame" style="display:grid;gap:5vh;align-content:center;min-height:80vh">
+    <div class="kicker" data-anim>03 · 过程规范与协作</div>
+    <h1 class="h-hero" style="font-size:7.8vw" data-anim>让每次改动，<br>都能被解释。</h1>
+    <p class="lead" style="max-width:61vw" data-anim>需求有出处、实现有边界、Review 有证据、历史可复盘。</p>
+  </div>
+  <div class="foot"><div>Act III · Traceable Collaboration</div><div>13 / 17</div></div>
+</section>
+
+<!-- 14 · process loop -->
+<section class="slide dark" data-animate="pipeline">
+  <div class="chrome"><div>Act III · Delivery Loop</div><div>14 / 17</div></div>
+  <div class="frame">
+    <div class="kicker">Issue 驱动，而不是代码驱动</div>
+    <h2 class="h-xl" style="font-size:5vw">一次增量的完整生命周期</h2>
+    <div class="pipeline-section">
+      <div class="pipeline" data-cols="6">
+        <div class="step" data-anim="step"><div class="step-nb">01</div><div class="step-title">Proposal</div><div class="step-desc">明确用户、边界、决策与验收</div></div>
+        <div class="step" data-anim="step"><div class="step-nb">02</div><div class="step-title">Issue</div><div class="step-desc">拆成可执行、范围可控的任务</div></div>
+        <div class="step" data-anim="step"><div class="step-nb">03</div><div class="step-title">Branch</div><div class="step-desc">个人 fork 开发，持续同步 upstream</div></div>
+        <div class="step" data-anim="step"><div class="step-nb">04</div><div class="step-title">PR</div><div class="step-desc">关联 Issue，描述改动与验证</div></div>
+        <div class="step" data-anim="step"><div class="step-nb">05</div><div class="step-title">Review</div><div class="step-desc">AI 检查 + 人工判断关键风险</div></div>
+        <div class="step" data-anim="step"><div class="step-nb">06</div><div class="step-title">Merge</div><div class="step-desc">小步合入，关闭 Issue，保留记录</div></div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:6vh" data-anim="step">工程文档进入开发后保持只读；需求变化以新 Issue / 新 Proposal 记录，旧决策不被覆盖。<div class="callout-src">DOCUMENTATION IMMUTABILITY</div></div>
+  </div>
+  <div class="foot"><div>Press → to reveal the collaboration loop</div><div>14 / 17</div></div>
+</section>
+
+<!-- 15 · collaboration evidence -->
+<section class="slide light">
+  <div class="chrome"><div>Act III · Collaboration Evidence</div><div>15 / 17</div></div>
+  <div class="frame grid-2-7-5" style="padding-top:6vh">
+    <div>
+      <div class="kicker" data-anim>过程不是口号，是仓库里的证据</div>
+      <h2 class="h-xl" style="font-size:5.1vw" data-anim>小步提交，持续互审</h2>
+      <p class="lead" style="margin-top:3vh" data-anim>每个改动从 Issue 开始，经 fork 分支与 PR 合入；Commit Message 描述单一意图，关键技术风险在评论中留下判断依据。</p>
+      <div class="callout" style="margin-top:4vh" data-anim>近期 SnapFit、视觉兼容、分类配置等改动均拆成独立 Issue / PR，同批次小步合入而非堆成一次大改。<div class="callout-src">REPOSITORY HISTORY</div></div>
+    </div>
+    <div style="display:grid;gap:2.5vh;margin-top:3vh">
+      <div class="stat-card" data-anim><div class="stat-label">Issues</div><div class="stat-nb">46</div><div class="stat-note">产品、架构、任务与设计澄清</div></div>
+      <div class="stat-card" data-anim><div class="stat-label">Pull Requests</div><div class="stat-nb">65</div><div class="stat-note">范围可追溯的工程增量</div></div>
+      <div class="stat-card" data-anim><div class="stat-label">Merged PRs</div><div class="stat-nb">43</div><div class="stat-note">持续集成到稳定主干</div></div>
+    </div>
+  </div>
+  <div class="foot"><div>Issue → PR → Review → Merge</div><div>15 / 17</div></div>
+</section>
+
+<!-- 16 · Product evolution -->
+<section class="slide light">
+  <div class="chrome"><div>Evidence · Physical Evolution</div><div>16 / 17</div></div>
+  <div class="frame" style="padding-top:4vh">
+    <div class="kicker" data-anim>工程闭环最终落在实体上</div>
     <h2 class="h-xl" style="font-size:4.8vw" data-anim>项目成品演变</h2>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2vw;margin-top:5vh;align-items:start">
       <figure class="tile" data-anim><div class="frame-img h-26"><img src="images/15-original-model.jpg" alt="原始 3D 模型"></div><figcaption class="frame-cap"><span class="pf">外观输入</span><span class="idx">01 · BEFORE</span></figcaption></figure>
-      <figure class="tile" data-anim><div class="frame-img h-26"><img src="images/15-digital-result.jpg" alt="处理后模型或爆炸图"></div><figcaption class="frame-cap"><span class="pf">数字成品</span><span class="idx">02 · DESIGN</span></figcaption></figure>
-      <figure class="tile" data-anim><div class="frame-img h-26"><img src="images/15-printed-parts.jpg" alt="打印零件排布"></div><figcaption class="frame-cap"><span class="pf">打印零件</span><span class="idx">03 · PRINT</span></figcaption></figure>
+      <figure class="tile" data-anim><div class="frame-img h-26"><img src="images/15-digital-result.jpg" alt="数字改造结果"></div><figcaption class="frame-cap"><span class="pf">数字成品</span><span class="idx">02 · DESIGN</span></figcaption></figure>
+      <figure class="tile" data-anim><div class="frame-img h-26"><img src="images/15-printed-parts.jpg" alt="打印零件"></div><figcaption class="frame-cap"><span class="pf">打印零件</span><span class="idx">03 · PRINT</span></figcaption></figure>
       <figure class="tile" data-anim><div class="frame-img h-26"><img src="images/15-final-assembly.jpg" alt="最终装配成品"></div><figcaption class="frame-cap"><span class="pf">实体装配</span><span class="idx">04 · ASSEMBLE</span></figcaption></figure>
     </div>
   </div>
-  <div class="foot"><div>4 images · same height · 3:2 recommended</div><div>15 / 17</div></div>
-</section>
-
-<!-- 16 · MS3 delivery -->
-<section class="slide hero light">
-  <div class="chrome"><div>Act IV · Milestone 3</div><div>16 / 17</div></div>
-  <div class="frame" style="display:grid;gap:5vh;align-content:center;min-height:80vh">
-    <div class="kicker" data-anim>FUNCTION CLOSED · QUALITY READY · USER TESTABLE</div>
-    <h1 class="h-hero" style="font-size:7.4vw" data-anim>从核心路径<br>到完整产品</h1>
-    <div class="grid-3" style="max-width:82vw" data-anim>
-      <div class="pillar"><div class="t">功能闭合</div><div class="d">识别、处理、预览、下载形成端到端闭环。</div></div>
-      <div class="pillar"><div class="t">质量达标</div><div class="d">测试、几何终验、评测集和 PR Review 共同兜底。</div></div>
-      <div class="pillar"><div class="t">可对外试用</div><div class="d">真实模型进入，数字设计包与实体打印件出来。</div></div>
-    </div>
-  </div>
-  <div class="foot"><div>Milestone 3 · Complete and demonstrable</div><div>16 / 17</div></div>
+  <div class="foot"><div>Model → Design → Print → Assembly</div><div>16 / 17</div></div>
 </section>
 
 <!-- 17 · Closing -->
 <section class="slide hero dark" data-animate="quote">
   <div class="chrome"><div>Mission 11 · Closing</div><div>17 / 17</div></div>
   <div class="frame center" style="gap:4vh">
-    <div class="kicker" data-anim>THE NEXT OBJECT IS YOURS</div>
-    <h1 class="h-hero" style="font-size:7.6vw" data-anim="line">每一个静态模型，</h1>
-    <h1 class="h-hero" style="font-size:7.6vw" data-anim="line">都可以成为作品。</h1>
-    <p class="lead" style="max-width:58vw" data-anim>Mission 11 正在建立从数字外观到真实制造之间的自动化桥梁。</p>
+    <div class="kicker" data-anim>MS3 · DONE MEANS DONE</div>
+    <h1 class="h-hero" style="font-size:7.4vw" data-anim="line">功能形成闭环，</h1>
+    <h1 class="h-hero" style="font-size:7.4vw" data-anim="line">质量进入流程，</h1>
+    <h1 class="h-hero" style="font-size:7.4vw" data-anim="line">协作留下证据。</h1>
     <div class="meta-row" data-anim><span>THANK YOU</span><span>·</span><span>Q &amp; A</span></div>
   </div>
-  <div class="foot"><div>Mission 11 · XAtom 3D Print</div><div>17 / 17</div></div>
+  <div class="foot"><div>Mission 11 · Milestone 3</div><div>17 / 17</div></div>
 </section>
 
 </div>
