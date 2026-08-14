@@ -612,113 +612,39 @@
 
 <!-- 10 · plugin interface -->
 <section class="slide dark">
-  <div class="chrome"><div>Act II · Module Interface</div><div>10 / 21</div></div>
+  <div class="chrome"><div>Act II · Runtime Flow</div><div>10 / 21</div></div>
   <div class="frame" style="padding-top:3vh">
-    <div class="kicker" data-anim>一个契约，接入多条领域路线</div>
-    <h2 class="h-xl" style="font-size:4.5vw" data-anim>模块先对齐接口，再各自演进</h2>
-    <div class="grid-2-6-6" style="margin-top:3.5vh;align-items:stretch">
-      <div class="stat-card" style="background:var(--paper);color:var(--ink);padding:2.6vh 2vw" data-anim>
-        <div class="stat-label">backend/pipelines/base.py</div>
-        <pre style="margin:1.7vh 0 0;font:500 .96vw/1.54 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap"><code>class PipelinePlugin(ABC):
-    @property
-    @abstractmethod
-    def category(self) -&gt; ModelCategory: ...
-
-    @abstractmethod
-    async def detect(
-        self, file_path: Path, output_dir: Path
-    ) -&gt; DetectionResult: ...
-
-    @abstractmethod
-    async def convert(
-        self, file_path: Path, output_dir: Path,
-        options: dict | None = None,
-    ) -&gt; ConversionResult: ...</code></pre>
-      </div>
-      <div style="display:grid;gap:2vh">
-        <div class="pillar" data-anim><div class="ic">CONTRACT</div><div class="t">统一输入输出</div><div class="d">检测与转换共享结果结构，API 不感知车辆、玩偶或人形内部算法。</div></div>
-        <div class="pillar" data-anim><div class="ic">REGISTRY</div><div class="t">按类别发现实现</div><div class="d"><code>registry.get_by_name(category)</code> 将任务交给对应插件。</div></div>
-        <div class="pillar" data-anim><div class="ic">EXTEND</div><div class="t">新增能力不改主链</div><div class="d">实现接口并注册即可接入分类、状态管理与交付流程。</div></div>
-      </div>
-    </div>
+    <div class="kicker" data-anim>沿用户流程继续向代码内部走</div>
+    <h2 class="h-xl" style="font-size:4.5vw" data-anim>一次任务，如何穿过整个仓库</h2>
+    <figure class="frame-img fit-contain" style="height:56vh;margin-top:2vh;background:transparent" data-anim><img src="images/10-runtime-flow.png" alt="从前端到领域管线的文件调用流程"></figure>
   </div>
-  <div class="foot"><div>PipelinePlugin → Registry → Specialized Pipeline</div><div>10 / 21</div></div>
+  <div class="foot"><div>UI → API → Classifier → Registry → Domain Pipeline</div><div>10 / 21</div></div>
 </section>
 
 <!-- 11 · backend entry and call chain -->
 <section class="slide light">
-  <div class="chrome"><div>Act II · Entry &amp; Call Chain</div><div>11 / 21</div></div>
-  <div class="frame" style="padding-top:3vh">
-    <div class="kicker" data-anim>上传请求如何走到领域算法</div>
-    <h2 class="h-xl" style="font-size:4.5vw" data-anim>入口轻，编排清晰，任务异步</h2>
-    <div class="pipeline-section" style="margin-top:3vh">
-      <div class="pipeline" data-cols="5">
-        <div class="step" data-anim><div class="step-nb">API</div><div class="step-title">upload</div><div class="step-desc">保存模型并创建 job</div></div>
-        <div class="step" data-anim><div class="step-nb">TASK</div><div class="step-title">classify</div><div class="step-desc">后台任务识别模型类别</div></div>
-        <div class="step" data-anim><div class="step-nb">ROUTE</div><div class="step-title">registry</div><div class="step-desc">按类别解析领域插件</div></div>
-        <div class="step" data-anim><div class="step-nb">DOMAIN</div><div class="step-title">detect / convert</div><div class="step-desc">执行真实几何处理</div></div>
-        <div class="step" data-anim><div class="step-nb">STATE</div><div class="step-title">status</div><div class="step-desc">持续返回进度与产物</div></div>
-      </div>
+  <div class="chrome"><div>Act II · Domain Routing</div><div>11 / 21</div></div>
+  <div class="frame" style="padding-top:4vh">
+    <div class="kicker" data-anim>主干不变，分类结果决定领域文件</div>
+    <h2 class="h-xl" style="font-size:4.7vw" data-anim>同一入口，分流到不同制造策略</h2>
+    <div class="grid-4" style="margin-top:5vh;gap:3vh 3vw">
+      <div class="stat-card" data-anim><div class="stat-label">CAR</div><div class="h-md" style="font-size:2vw;margin-top:1vh">car_pipeline.py</div><div class="stat-note">调用 car-converter：姿态归一、轴轮规划、XAtom 与装配包。</div></div>
+      <div class="stat-card" data-anim><div class="stat-label">FIGURINE</div><div class="h-md" style="font-size:2vw;margin-top:1vh">figurine_pipeline.py</div><div class="stat-note">调用 doll-embedding：语义选位、共享腔体与随形盖板。</div></div>
+      <div class="stat-card" data-anim><div class="stat-label">HUMANOID</div><div class="h-md" style="font-size:2vw;margin-top:1vh">humanoid_pipeline.py</div><div class="stat-note">复用玩偶主链，并叠加人形背部约束和关节计划。</div></div>
+      <div class="stat-card" data-anim><div class="stat-label">UNKNOWN</div><div class="h-md" style="font-size:2vw;margin-top:1vh">GenericPipeline</div><div class="stat-note">专业路线不适用时，回落到共享几何能力继续处理。</div></div>
     </div>
-    <div class="stat-card" style="background:var(--ink);color:var(--paper);padding:2.3vh 2vw;margin-top:3.2vh" data-anim>
-      <div class="stat-label" style="color:var(--paper-tint)">backend/routes/pipeline.py</div>
-      <pre style="margin:1.5vh 0 0;font:500 .98vw/1.52 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;color:var(--paper)"><code>background_tasks.add_task(
-    _run_classification_and_detection,
-    job_id, model_path, job_dir,
-)
-
-classification = await classify_model(model_path, job_dir)
-pipeline_name, context = _select_pipeline_for_classification(classification, model_path)
-pipeline = registry.get_by_name(pipeline_name)
-result = await pipeline.detect(model_path, job_dir)
-await _set_job(job_id, status="analyzing", summary=result.summary)</code></pre>
-    </div>
+    <div class="callout" style="margin-top:5vh" data-anim><span style="font-family:monospace">base.py: PipelinePlugin</span> 统一 detect / convert / result；<span style="font-family:monospace">registry.py</span> 只负责把类别映射到实现。<div class="callout-src">STABLE CONTRACT</div></div>
   </div>
-  <div class="foot"><div>HTTP → Background Task → Classifier → Registry → Pipeline</div><div>11 / 21</div></div>
+  <div class="foot"><div>Classification → Registry → Specialized Strategy</div><div>11 / 21</div></div>
 </section>
 
 <!-- 12 · shared cavity call -->
 <section class="slide dark">
   <div class="chrome"><div>Act II · Shared Geometry Call</div><div>12 / 21</div></div>
   <div class="frame" style="padding-top:3vh">
-    <div class="kicker" data-anim>领域适配器调用共享几何核心</div>
-    <h2 class="h-xl" style="font-size:4.5vw" data-anim>车辆只描述约束，Engine 负责搜索</h2>
-    <div class="grid-2-6-6" style="margin-top:3.2vh;align-items:stretch">
-      <div class="stat-card" style="background:var(--paper);color:var(--ink);padding:2.5vh 2vw" data-anim>
-        <div class="stat-label">car-converter · adapter</div>
-        <pre style="margin:1.6vh 0 0;font:500 .93vw/1.48 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap"><code>patches, route = engine.evaluate_candidates(
-    body_mesh,
-    "vehicle",
-    CavitySpec(clear_size_mm=cavity_size),
-    context={
-        "center_values": center_z_values,
-        "minimum_wall_mm": structural_wall,
-        "require_thickness": False,
-    },
-)
-
-accepted = sorted(
-    patches,
-    key=lambda p: (p.surface_depth_mm, -p.center_z_mm),
-)</code></pre>
-      </div>
-      <div class="stat-card" style="background:rgba(var(--paper-rgb),.07);color:var(--paper);padding:2.5vh 2vw" data-anim>
-        <div class="stat-label" style="color:var(--paper-tint)">cavity-engine · engine</div>
-        <pre style="margin:1.6vh 0 0;font:500 .93vw/1.48 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;color:var(--paper)"><code>candidates = route.strategy.candidates(
-    mesh, spec, constraints, context
-)
-measured = measure_surface_patches(
-    mesh, candidates, spec, frame
-)
-edge_safe = [p for p in measured if p.edge_safe]
-sufficient = [p for p in edge_safe if p.depth_sufficient]
-chosen = min(
-    sufficient or edge_safe,
-    key=lambda p: (p.score, -p.minimum_material_depth_mm),
-)</code></pre>
-      </div>
-    </div>
-    <div class="callout" style="margin-top:2.8vh" data-anim>调用关系：领域路线提供候选空间与制造约束 → 共享引擎统一测量、过滤、评分 → 领域路线继续执行布尔与装配。<div class="callout-src">ADAPTER PATTERN</div></div>
+    <div class="kicker" data-anim>进入具体制造步骤：以 XAtom 开腔为例</div>
+    <h2 class="h-xl" style="font-size:4.5vw" data-anim>领域给约束，共享引擎做搜索</h2>
+    <figure class="frame-img fit-contain" style="height:56vh;margin-top:2vh;background:transparent" data-anim><img src="images/11-geometry-flow.png" alt="车辆适配器调用共享腔体引擎流程"></figure>
   </div>
   <div class="foot"><div>Domain constraints → Shared measurement → Ranked surface patch</div><div>12 / 21</div></div>
 </section>
@@ -727,37 +653,9 @@ chosen = min(
 <section class="slide light">
   <div class="chrome"><div>Act II · Joint Algorithm</div><div>13 / 21</div></div>
   <div class="frame" style="padding-top:3vh">
-    <div class="kicker" data-anim>关节位置：语义负责“哪里”，几何负责“能不能”</div>
-    <h2 class="h-xl" style="font-size:4.4vw" data-anim>多视图融合，但不让视觉覆盖几何</h2>
-    <div class="grid-2-6-6" style="margin-top:3.2vh;align-items:stretch">
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5vh 1.3vw">
-        <div class="pillar" data-anim><div class="ic">BASELINE</div><div class="t">几何基线</div><div class="d">从包围盒、双侧对称和局部表面环估计初始关节点。</div></div>
-        <div class="pillar" data-anim><div class="ic">VISION</div><div class="t">多视图语义</div><div class="d">正面与侧面视图提供解剖区域及置信度。</div></div>
-        <div class="pillar" data-anim><div class="ic">FUSION</div><div class="t">受限融合</div><div class="d">投影回三维、限制最大位移，再按置信度小幅修正。</div></div>
-        <div class="pillar" data-anim><div class="ic">PLAN</div><div class="t">关节契约</div><div class="d">输出中心、朝外轴、连接类型和装配间隙参数。</div></div>
-      </div>
-      <div class="stat-card" style="background:var(--ink);color:var(--paper);padding:2.2vh 2vw" data-anim>
-        <div class="stat-label" style="color:var(--paper-tint)">doll-embedding · vision_agent.py</div>
-        <pre style="margin:1.4vh 0 0;font:500 .88vw/1.43 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;color:var(--paper)"><code>proposed = baseline[joint].copy()
-proposed[x], z_front = pixel_to_world(front, cameras["front"])
-proposed[y], z_side  = pixel_to_world(side,  cameras["side"])
-proposed[z] = mean(z_front, z_side)
-
-delta = proposed - baseline[joint]
-if norm(delta) &gt; maximum_shift:
-    delta *= maximum_shift / norm(delta)
-
-visual_weight = confidence_weight(observations)
-joint_center = baseline[joint] + delta * visual_weight
-
-JointPlan(
-    center_mm=joint_center,
-    outward_axis_unit=surface_axis,
-    kind=JointKind.AUTO,
-)</code></pre>
-        <div style="margin-top:1.6vh;padding-top:1.4vh;border-top:1px solid rgba(var(--paper-rgb),.24);font-size:1vw;line-height:1.45;color:var(--paper-tint)">视觉只做受限校准；闭合表面、局部厚度和拓扑始终是度量权威。</div>
-      </div>
-    </div>
+    <div class="kicker" data-anim>再进入另一条制造能力：人形关节定位</div>
+    <h2 class="h-xl" style="font-size:4.4vw" data-anim>从几何基线，到可交付的关节计划</h2>
+    <figure class="frame-img fit-contain" style="height:56vh;margin-top:2vh;background:transparent" data-anim><img src="images/12-joint-flow.png" alt="人形关节定位文件调用关系"></figure>
   </div>
   <div class="foot"><div>Geometry baseline + Multiview semantics + Bounded correction</div><div>13 / 21</div></div>
 </section>
@@ -790,22 +688,12 @@ JointPlan(
         <div class="stat-card" data-anim><div class="stat-label">REAL GEOMETRY</div><div class="h-md" style="font-size:2.2vw;margin-top:1vh">制造结果必须终验</div><div class="stat-note">检查网格、包含关系、碰撞与可装配性，而非只看渲染图。</div></div>
         <div class="stat-card" data-anim><div class="stat-label">DELIVERY GATE</div><div class="h-md" style="font-size:2.2vw;margin-top:1vh">合并前自动检查</div><div class="stat-note">后端测试、接口导入、前端类型检查与构建共同守门。</div></div>
       </div>
-      <div class="stat-card" style="background:var(--ink);color:var(--paper);padding:3vh 2.2vw" data-anim>
-        <div class="stat-label" style="color:var(--paper-tint)">关键逻辑 · 节选并抽象阈值</div>
-        <pre style="margin:2.2vh 0 0;font:500 1.05vw/1.65 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;color:var(--paper)"><code>class ContractModel(BaseModel):
-    model_config = ConfigDict(
-        extra="forbid",
-        frozen=True,
-    )
-
-containment = intersection.volume() / cavity.volume()
-if containment &lt; MIN_CONTAINMENT:
-    reject(candidate)
-    continue
-
-validate_assembly(parts)
-validate_binary_stl(output)</code></pre>
-        <div style="margin-top:2vh;padding-top:1.5vh;border-top:1px solid rgba(var(--paper-rgb),.24);font-size:1.05vw;line-height:1.5;color:var(--paper-tint)">契约拒绝额外输入；几何候选不满足制造约束时直接淘汰；交付物再次独立验证。</div>
+      <div class="stat-card" style="background:var(--ink);color:var(--paper);padding:3vh 2.2vw;display:grid;align-content:center;gap:2.5vh" data-anim>
+        <div class="stat-label" style="color:var(--paper-tint)">QUALITY CALL CHAIN</div>
+        <div class="rowline" style="border-color:rgba(var(--paper-rgb),.2)"><div class="k" style="color:var(--paper)">contracts.py</div><div class="v" style="color:var(--paper-tint)">输入契约与不可变结果</div></div>
+        <div class="rowline" style="border-color:rgba(var(--paper-rgb),.2)"><div class="k" style="color:var(--paper)">tests/</div><div class="v" style="color:var(--paper-tint)">核心算法与跨模块回归</div></div>
+        <div class="rowline" style="border-color:rgba(var(--paper-rgb),.2)"><div class="k" style="color:var(--paper)">validation/</div><div class="v" style="color:var(--paper-tint)">STL、外观、碰撞与装配终验</div></div>
+        <div class="rowline" style="border-color:rgba(var(--paper-rgb),.2)"><div class="k" style="color:var(--paper)">ci.yml</div><div class="v" style="color:var(--paper-tint)">PR 合并前统一质量门</div></div>
       </div>
     </div>
   </div>
@@ -877,22 +765,12 @@ validate_binary_stl(output)</code></pre>
         <div class="stat-card"><div class="stat-label">RECORDED</div><div class="stat-note" style="margin-top:1vh">设计调整新增记录</div></div>
       </div>
     </div>
-    <div class="stat-card" style="background:var(--ink);color:var(--paper);padding:3vh 2.2vw;margin-top:1vh" data-anim>
-      <div class="stat-label" style="color:var(--paper-tint)">.github/workflows/ci.yml</div>
-      <pre style="margin:2vh 0 0;font:500 1.05vw/1.62 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;color:var(--paper)"><code>on:
-  pull_request:
-  push:
-    branches: [main]
-
-jobs:
-  car-converter-test:
-    - run: uv run pytest
-    - run: uv run car-converter --help
-
-  frontend-build:
-    - run: npm run typecheck
-    - run: npm run build</code></pre>
-      <div style="margin-top:2vh;padding-top:1.5vh;border-top:1px solid rgba(var(--paper-rgb),.24);font-size:1.05vw;line-height:1.5;color:var(--paper-tint)">每次 PR 自动触发跨模块质量门；通过后再进入人工 Review 与合并。</div>
+    <div class="stat-card" style="background:var(--ink);color:var(--paper);padding:3vh 2.2vw;margin-top:1vh;display:grid;align-content:center;gap:2.2vh" data-anim>
+      <div class="stat-label" style="color:var(--paper-tint)">REPOSITORY EVIDENCE</div>
+      <div><div style="font:600 1.45vw/1.3 ui-monospace,monospace">Issue</div><div style="margin-top:.8vh;color:var(--paper-tint)">定义问题、范围与验收标准</div></div>
+      <div style="border-top:1px solid rgba(var(--paper-rgb),.2);padding-top:2vh"><div style="font:600 1.45vw/1.3 ui-monospace,monospace">Pull Request</div><div style="margin-top:.8vh;color:var(--paper-tint)">关联 Issue，描述实现与验证方式</div></div>
+      <div style="border-top:1px solid rgba(var(--paper-rgb),.2);padding-top:2vh"><div style="font:600 1.45vw/1.3 ui-monospace,monospace">CI + Review</div><div style="margin-top:.8vh;color:var(--paper-tint)">自动门禁先行，人工判断设计风险</div></div>
+      <div style="border-top:1px solid rgba(var(--paper-rgb),.2);padding-top:2vh"><div style="font:600 1.45vw/1.3 ui-monospace,monospace">Merge + Record</div><div style="margin-top:.8vh;color:var(--paper-tint)">小步进入主干，设计变更追加记录</div></div>
     </div>
   </div>
   <div class="foot"><div>Issue → PR → Review → Merge</div><div>19 / 21</div></div>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1448" height="760" viewBox="0 0 1448 760">
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#638068"/></marker><style>.t{font-family:Arial,'Noto Sans SC';fill:#17331f}.m{font-family:monospace;fill:#638068}.box{fill:#f5f1e8;stroke:#9db5a1;stroke-width:2}.core{fill:#17331f;stroke:#17331f;stroke-width:2}.ct{fill:#f5f1e8;font-family:Arial,'Noto Sans SC'}.cm{fill:#b8ceb9;font-family:monospace}.arr{stroke:#638068;stroke-width:3;fill:none;marker-end:url(#a)}</style></defs>
+<rect width="1448" height="760" rx="28" fill="#edf1e9"/>
+<text x="64" y="70" class="m" font-size="20">RUNTIME FLOW · FROM UI TO ARTIFACTS</text>
+<text x="64" y="116" class="t" font-size="34" font-weight="700">一次任务，沿稳定主干流过</text>
+<g transform="translate(60 190)">
+ <rect class="box" width="238" height="170" rx="18"/><text class="m" x="24" y="38" font-size="16">frontend/</text><text class="t" x="24" y="78" font-size="25" font-weight="700">chat/page.tsx</text><text class="t" x="24" y="116" font-size="18">上传 · 选项 · 轮询</text><text class="m" x="24" y="146" font-size="15">POST /pipeline</text>
+ <path class="arr" d="M250 85 H318"/>
+ <rect class="core" x="330" width="260" height="170" rx="18"/><text class="cm" x="354" y="38" font-size="16">backend/routes/</text><text class="ct" x="354" y="78" font-size="25" font-weight="700">pipeline.py</text><text class="ct" x="354" y="116" font-size="18">创建 Job · 后台任务</text><text class="cm" x="354" y="146" font-size="15">upload / convert / status</text>
+ <path class="arr" d="M602 85 H670"/>
+ <rect class="box" x="682" width="260" height="170" rx="18"/><text class="m" x="706" y="38" font-size="16">backend/agent/</text><text class="t" x="706" y="78" font-size="25" font-weight="700">model_classifier.py</text><text class="t" x="706" y="116" font-size="18">结构优先 · 视觉复核</text><text class="m" x="706" y="146" font-size="15">classify_model()</text>
+ <path class="arr" d="M954 85 H1022"/>
+ <rect class="core" x="1034" width="290" height="170" rx="18"/><text class="cm" x="1058" y="38" font-size="16">backend/pipelines/</text><text class="ct" x="1058" y="78" font-size="25" font-weight="700">registry.py</text><text class="ct" x="1058" y="116" font-size="18">选择领域 Pipeline</text><text class="cm" x="1058" y="146" font-size="15">get_by_name(category)</text>
+</g>
+<path class="arr" d="M1239 372 V444 H1112"/>
+<g transform="translate(180 460)"><rect class="box" width="1088" height="190" rx="20"/><text class="m" x="28" y="40" font-size="16">DOMAIN PIPELINES</text><text class="t" x="28" y="82" font-size="25" font-weight="700">car_pipeline.py</text><text class="t" x="293" y="82" font-size="25" font-weight="700">figurine_pipeline.py</text><text class="t" x="620" y="82" font-size="25" font-weight="700">humanoid_pipeline.py</text><text class="t" x="28" y="124" font-size="18">detect() / convert()</text><text class="t" x="293" y="124" font-size="18">detect() / convert()</text><text class="t" x="620" y="124" font-size="18">detect() / convert()</text><line x1="28" y1="148" x2="1060" y2="148" stroke="#c7d3c8"/><text class="m" x="28" y="176" font-size="15">ConversionResult → parts / preview / assembly / package</text></g>
+</svg>
