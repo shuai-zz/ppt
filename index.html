@@ -632,13 +632,29 @@
   <div class="frame" style="padding-top:4vh">
     <div class="kicker" data-anim>测试覆盖核心风险</div>
     <h2 class="h-xl" style="font-size:4.9vw" data-anim>质量不是最后补一轮</h2>
-    <div class="grid-6" style="margin-top:4vh;gap:3vh 4vw">
-      <div class="stat-card" data-anim><div class="stat-label">Backend</div><div class="stat-nb" style="font-size:4.2vw">43</div><div class="stat-note">编排、状态与路线集成</div></div>
-      <div class="stat-card" data-anim><div class="stat-label">Car Converter</div><div class="stat-nb" style="font-size:4.2vw">99</div><div class="stat-note">检测、几何与装配验证</div></div>
-      <div class="stat-card" data-anim><div class="stat-label">Doll Embedding</div><div class="stat-nb" style="font-size:4.2vw">46+</div><div class="stat-note">选位、视觉与盖板</div></div>
-      <div class="stat-card" data-anim><div class="stat-label">Cavity Engine</div><div class="stat-nb" style="font-size:4.2vw">13</div><div class="stat-note">共享几何核心</div></div>
-      <div class="stat-card" data-anim><div class="stat-label">Benchmark</div><div class="stat-nb" style="font-size:4.2vw">73</div><div class="stat-note">真实模型分类评测</div></div>
-      <div class="stat-card" data-anim><div class="stat-label">Frontend Gate</div><div class="stat-nb" style="font-size:4.2vw">2</div><div class="stat-note">Typecheck + Build</div></div>
+    <div class="grid-2-6-6" style="margin-top:4vh;align-items:stretch">
+      <div style="display:grid;gap:2.2vh">
+        <div class="stat-card" data-anim><div class="stat-label">CORE LOGIC</div><div class="h-md" style="font-size:2.2vw;margin-top:1vh">核心算法持续回归</div><div class="stat-note">分类、规划、腔体与装配规则均有针对性测试。</div></div>
+        <div class="stat-card" data-anim><div class="stat-label">REAL GEOMETRY</div><div class="h-md" style="font-size:2.2vw;margin-top:1vh">制造结果必须终验</div><div class="stat-note">检查网格、包含关系、碰撞与可装配性，而非只看渲染图。</div></div>
+        <div class="stat-card" data-anim><div class="stat-label">DELIVERY GATE</div><div class="h-md" style="font-size:2.2vw;margin-top:1vh">合并前自动检查</div><div class="stat-note">后端测试、接口导入、前端类型检查与构建共同守门。</div></div>
+      </div>
+      <div class="stat-card" style="background:var(--ink);color:var(--paper);padding:3vh 2.2vw" data-anim>
+        <div class="stat-label" style="color:var(--paper-tint)">关键逻辑 · 节选并抽象阈值</div>
+        <pre style="margin:2.2vh 0 0;font:500 1.05vw/1.65 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;color:var(--paper)"><code>class ContractModel(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        frozen=True,
+    )
+
+containment = intersection.volume() / cavity.volume()
+if containment &lt; MIN_CONTAINMENT:
+    reject(candidate)
+    continue
+
+validate_assembly(parts)
+validate_binary_stl(output)</code></pre>
+        <div style="margin-top:2vh;padding-top:1.5vh;border-top:1px solid rgba(var(--paper-rgb),.24);font-size:1.05vw;line-height:1.5;color:var(--paper-tint)">契约拒绝额外输入；几何候选不满足制造约束时直接淘汰；交付物再次独立验证。</div>
+      </div>
     </div>
   </div>
   <div class="foot"><div>Unit · Integration · Geometry · Benchmark</div><div>11 / 17</div></div>
@@ -698,17 +714,33 @@
 <!-- 15 · collaboration evidence -->
 <section class="slide light">
   <div class="chrome"><div>Act III · Collaboration Evidence</div><div>15 / 17</div></div>
-  <div class="frame grid-2-7-5" style="padding-top:6vh">
+  <div class="frame grid-2-7-5" style="padding-top:5vh">
     <div>
       <div class="kicker" data-anim>过程不是口号，是仓库里的证据</div>
       <h2 class="h-xl" style="font-size:5.1vw" data-anim>小步提交，持续互审</h2>
       <p class="lead" style="margin-top:3vh" data-anim>每个改动从 Issue 开始，经 fork 分支与 PR 合入；Commit Message 描述单一意图，关键技术风险在评论中留下判断依据。</p>
-      <div class="callout" style="margin-top:4vh" data-anim>近期 SnapFit、视觉兼容、分类配置等改动均拆成独立 Issue / PR，同批次小步合入而非堆成一次大改。<div class="callout-src">REPOSITORY HISTORY</div></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1vw;margin-top:4vh" data-anim>
+        <div class="stat-card"><div class="stat-label">LINKED</div><div class="stat-note" style="margin-top:1vh">PR 对应 Issue，范围一致</div></div>
+        <div class="stat-card"><div class="stat-label">REVIEWED</div><div class="stat-note" style="margin-top:1vh">AI 检查 + 人工互审</div></div>
+        <div class="stat-card"><div class="stat-label">RECORDED</div><div class="stat-note" style="margin-top:1vh">设计调整新增记录</div></div>
+      </div>
     </div>
-    <div style="display:grid;gap:2.5vh;margin-top:3vh">
-      <div class="stat-card" data-anim><div class="stat-label">Issues</div><div class="stat-nb">46</div><div class="stat-note">产品、架构、任务与设计澄清</div></div>
-      <div class="stat-card" data-anim><div class="stat-label">Pull Requests</div><div class="stat-nb">65</div><div class="stat-note">范围可追溯的工程增量</div></div>
-      <div class="stat-card" data-anim><div class="stat-label">Merged PRs</div><div class="stat-nb">43</div><div class="stat-note">持续集成到稳定主干</div></div>
+    <div class="stat-card" style="background:var(--ink);color:var(--paper);padding:3vh 2.2vw;margin-top:1vh" data-anim>
+      <div class="stat-label" style="color:var(--paper-tint)">.github/workflows/ci.yml</div>
+      <pre style="margin:2vh 0 0;font:500 1.05vw/1.62 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;color:var(--paper)"><code>on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  car-converter-test:
+    - run: uv run pytest
+    - run: uv run car-converter --help
+
+  frontend-build:
+    - run: npm run typecheck
+    - run: npm run build</code></pre>
+      <div style="margin-top:2vh;padding-top:1.5vh;border-top:1px solid rgba(var(--paper-rgb),.24);font-size:1.05vw;line-height:1.5;color:var(--paper-tint)">每次 PR 自动触发跨模块质量门；通过后再进入人工 Review 与合并。</div>
     </div>
   </div>
   <div class="foot"><div>Issue → PR → Review → Merge</div><div>15 / 17</div></div>
